@@ -121,3 +121,28 @@ help - displays help for bash built-in commands.
 help cd 
 ```
 
+#### Wildcard Characters
+
+\* : matches any number of characters.
+
+```bash
+ls *.jpg
+```
+
+? : matches exactly one single character.
+
+```bash
+rm file?.txt
+```
+
+\[ ] : matches the character contained within the brackets.
+
+```bash
+cp [abc]* /tmp
+```
+
+\[! ] or \[^ ] : matches any character not listed inside the brackets.
+
+```ballerina
+ls [!0-9]*
+```
