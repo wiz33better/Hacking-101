@@ -1,6 +1,4 @@
----
-description: This is going to be a cheatsheet for important commands in linux with syntax.
----
+
 
 # Linux for Hackers
 
