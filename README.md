@@ -121,7 +121,7 @@ help - displays help for bash built-in commands.
 help cd 
 ```
 
-#### Wildcard Characters
+### Wildcard Characters
 
 \* : matches any number of characters.
 
@@ -145,4 +145,60 @@ cp [abc]* /tmp
 
 ```ballerina
 ls [!0-9]*
+```
+
+### I/O Redirection and Stream Management
+
+\| - Connects the standard output of one command directly into the standard input of another, creating a sequential chain of data.
+
+```bash
+cat names.txt | sort
+```
+
+\> - Overwrites a file with the standard output of a command.
+
+```bash
+ls > output.txt
+```
+
+\>> - Appends the standard output of a command to the end of an existing file.
+
+```bash
+echo "new line" >> log.txt
+```
+
+< - Redirects the contents of a file to be used as standard input for a command.
+
+```bash
+sort < list.txt
+```
+
+#### File Descriptor
+
+A file descriptor is a non-negative integer that the Linux kernel uses as a unique identifier for an open file or I/O stream. By default, every process starts with three standard descriptors: `0` for Standard Input (stdin), `1` for Standard Output (stdout), and `2` for Standard Error (stderr). When you redirect output, you are essentially telling the shell to point these numeric indexes toward a specific file instead of the terminal.
+
+Usage: `ls -l /root 2> error.log` _(This uses file descriptor `2` to redirect only error messages to a file while letting normal output show on the screen.)_
+
+sed - A stream editor used to parse and transform text within a data stream.
+
+```bash
+sed 's/apple/orange/' fruits.txt
+```
+
+tee - Reads standard input and writes it to both standard output and one or more files.
+
+```bash
+ls | tee directory_list.txt
+```
+
+#### Process substitution
+
+Process Substitution allows you to take the output of a command and feed it into another program as if it were an actual file. It creates a temporary "alias" for the data, which is useful for commands that expect a file path as an argument rather than a direct stream of text.
+
+usage: cat <(echo hi)
+
+mkfifo - Creates a named pipe (a special file) that allows independent processes to communicate.
+
+```bash
+mkfifo my_pipe
 ```
