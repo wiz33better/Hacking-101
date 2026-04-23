@@ -1,258 +1,56 @@
-# Linux for Hackers
+# README
 
-whoami - prints the username of the currently logged-in user.
+## 🧠 Hacking 101
 
-```bash
-whoami
-```
+Welcome to **Hacking 101** — a structured collection of notes, walkthroughs, and concepts covering the fundamentals of cybersecurity and ethical hacking.
 
-echo - outputs text or variable values to stdout.
+This repository is designed as a **learning journal + reference guide**, built while exploring different areas of security.
 
-```bash
-echo "Hello World"
-echo "text" >> file.txt
-```
+***
 
-cd - changes the current working directory.
+### 📚 What You'll Find Here
 
-```bash
-cd Desktop
-cd .. 
-cd ~
-```
+* 🐧 Linux fundamentals
+* 🌐 Networking basics
+* 🔍 Enumeration techniques
+* 🛠️ Tools & usage
+* 🚩 CTF writeups
+* 🔐 Web security concepts
+* ⚙️ Practical labs & exercises
 
-cat - concatenates and displays file contents.
+***
 
-```bash
-cat file.txt
-```
+### 🎯 Purpose
 
-pwd - prints the absolute path of the current working directory.
+The goal of this repo is to:
 
-```bash
-pwd
-```
+* Build a solid foundation in cybersecurity
+* Document hands-on learning
+* Create a personal knowledge base
+* Share useful insights with others
 
-grep - searches for patters in files using regex.
+***
 
-```bash
-grep "root" /etc/passwd
-```
+### ⚠️ Disclaimer
 
-diff - compares two files line by line.
+This content is for **educational purposes only**.
 
-```bash
-diff file1.txt file2.txt
-```
+Do not use any techniques or tools described here on systems you do not own or have explicit permission to test.
 
-ls - lists directory contents.
+***
 
-```bash
-ls 
-ls -a 
-```
+### 🚀 Progress
 
-touch - creates empty files or updates file timestamps.
+This is an ongoing project — content will continue to grow over time.
 
-```bash
-touch payload.sh
-touch -t 99999999 f
-```
+***
 
-rm - removes files or directories.
+### 🤝 Contributing
 
-```bash
-rm file.txt
-rm -rf /tmp/root
-```
+Suggestions, corrections, and discussions are always welcome.
 
-cp - copies files or directories.
+***
 
-```bash
-cp file1.txt file2.txt
-cp old.txt new.txt
-```
+### 📌 Author
 
-mv - moves or renames files.
-
-```bash
-mv 1.txt 2.txt
-```
-
-mkdir - creates new directories.
-
-```bash
-mkdir test
-```
-
-find - searches for files by name, permissions, size, owner, or type.
-
-```bash
-find -name test
-```
-
-file - determines the true type of file regardless of extension.
-
-```bash
-file suspicious.bin
-file image.jpg
-```
-
-ln - creates hard or symbolic links.
-
-```bash
-ln -s /etc/passwd /tmp/p
-```
-
-man - opens the namual page for any command.
-
-```bash
-man grep
-man ls
-```
-
-help - displays help for bash built-in commands.
-
-```bash
-help cd 
-```
-
-### Wildcard Characters
-
-\* : matches any number of characters.
-
-```bash
-ls *.jpg
-```
-
-? : matches exactly one single character.
-
-```bash
-rm file?.txt
-```
-
-\[ ] : matches the character contained within the brackets.
-
-```bash
-cp [abc]* /tmp
-```
-
-\[! ] or \[^ ] : matches any character not listed inside the brackets.
-
-```ballerina
-ls [!0-9]*
-```
-
-### I/O Redirection and Stream Management
-
-\| - Connects the standard output of one command directly into the standard input of another, creating a sequential chain of data.
-
-```bash
-cat names.txt | sort
-```
-
-\> - Overwrites a file with the standard output of a command.
-
-```bash
-ls > output.txt
-```
-
-\>> - Appends the standard output of a command to the end of an existing file.
-
-```bash
-echo "new line" >> log.txt
-```
-
-< - Redirects the contents of a file to be used as standard input for a command.
-
-```bash
-sort < list.txt
-```
-
-#### File Descriptor
-
-A file descriptor is a non-negative integer that the Linux kernel uses as a unique identifier for an open file or I/O stream. By default, every process starts with three standard descriptors: `0` for Standard Input (stdin), `1` for Standard Output (stdout), and `2` for Standard Error (stderr). When you redirect output, you are essentially telling the shell to point these numeric indexes toward a specific file instead of the terminal.
-
-Usage: `ls -l /root 2> error.log` _(This uses file descriptor `2` to redirect only error messages to a file while letting normal output show on the screen.)_
-
-sed - A stream editor used to parse and transform text within a data stream.
-
-```bash
-sed 's/apple/orange/' fruits.txt
-```
-
-tee - Reads standard input and writes it to both standard output and one or more files.
-
-```bash
-ls | tee directory_list.txt
-```
-
-#### Process substitution
-
-Process Substitution allows you to take the output of a command and feed it into another program as if it were an actual file. It creates a temporary "alias" for the data, which is useful for commands that expect a file path as an argument rather than a direct stream of text.
-
-usage: cat <(echo hi)
-
-mkfifo - Creates a named pipe (a special file) that allows independent processes to communicate.
-
-```bash
-mkfifo my_pipe
-```
-
-### Shell Variable Essentials
-
-\= : Used to assign a value to a variable name
-
-```bash
-NAME="Gemini"
-```
-
-$ : Used to access or "expand" the value stored inside a variable
-
-```bash
-echo $NAME
-```
-
-read : A command that pauses execution to take input from the user and save it into a variable
-
-```bash
-read USER_INPUT
-```
-
-export : Marks a local shell variable to be passed down to any child processes or scripts started from that session.
-
-```bash
-export PATH
-```
-
-env : A command that lists all current environment variables or runs a program in a modified environment.
-
-```bash
-env
-```
-
-### Data Manipulation
-
-tr : Short for translate, it is used to swap, delete, or squeeze specific characters (like changing lowercase to uppercase).
-
-```bash
-echo "hello world" | tr 'a-z' 'A-Z'
-```
-
-head : Displays the beginning of a file, showing the first 10 lines by default.
-
-```bash
-head -n 5 data.txt
-```
-
-cut : Used to extract specific columns or sections from each line of a file based on a delimiter or character position.
-
-```bash
-cut -d " " -f 1 scores.txt
-```
-
-sort : Arranges the lines of a text file in a specific order, such as alphabetical or numerical.
-
-```bash
-sort names.txt
-```
+Maintained by **n0voidX**
